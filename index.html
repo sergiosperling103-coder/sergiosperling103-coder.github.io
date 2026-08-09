@@ -1,0 +1,326 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b1020">
+  <title>Codex × DeepSeek 配置助手 · 桌面版</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%9A%80%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- 非电脑端拦截页 -->
+  <div class="mobile-block" id="mobileBlock">
+    <div class="mobile-card">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+        <line x1="8" y1="21" x2="16" y2="21"></line>
+        <line x1="12" y1="17" x2="12" y2="21"></line>
+      </svg>
+      <h2>请使用电脑访问</h2>
+      <p>本工具需要在电脑浏览器中读写本机的 Codex 配置文件（<code>~/.codex</code>）。<br>请在 Windows / macOS 电脑上，使用 Chrome 或 Edge 打开本页面。</p>
+    </div>
+  </div>
+
+  <div class="app">
+    <!-- 左侧步骤导航 -->
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-logo">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path>
+          </svg>
+        </div>
+        <div>
+          <div class="brand-name">Codex × DeepSeek</div>
+          <div class="brand-sub">一键配置助手</div>
+        </div>
+      </div>
+
+      <div class="sidebar-label">设置向导</div>
+
+      <nav class="side-steps">
+        <button class="side-step" data-step="1">
+          <span class="step-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+              <polyline points="7 10 12 15 17 10"></polyline>
+              <line x1="12" y1="15" x2="12" y2="3"></line>
+            </svg>
+          </span>
+          <span class="step-text">
+            <span class="step-title">下载 Codex</span>
+            <span class="step-desc">官方安装包</span>
+          </span>
+          <span class="step-state">1</span>
+        </button>
+
+        <button class="side-step" data-step="2">
+          <span class="step-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+              <circle cx="12" cy="7" r="4"></circle>
+            </svg>
+          </span>
+          <span class="step-text">
+            <span class="step-title">登录 DeepSeek</span>
+            <span class="step-desc">开放平台账号</span>
+          </span>
+          <span class="step-state">2</span>
+        </button>
+
+        <button class="side-step" data-step="3">
+          <span class="step-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"></path>
+            </svg>
+          </span>
+          <span class="step-text">
+            <span class="step-title">获取 API Key</span>
+            <span class="step-desc">创建并验证</span>
+          </span>
+          <span class="step-state">3</span>
+        </button>
+
+        <button class="side-step" data-step="4">
+          <span class="step-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="22" y1="2" x2="11" y2="13"></line>
+              <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+            </svg>
+          </span>
+          <span class="step-text">
+            <span class="step-title">一键部署</span>
+            <span class="step-desc">写入本地配置</span>
+          </span>
+          <span class="step-state">4</span>
+        </button>
+
+        <button class="side-step" data-step="5">
+          <span class="step-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+          </span>
+          <span class="step-text">
+            <span class="step-title">开始使用</span>
+            <span class="step-desc">重启 Codex</span>
+          </span>
+          <span class="step-state">5</span>
+        </button>
+      </nav>
+
+      <div class="privacy-card">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+          <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+        </svg>
+        <div>
+          <strong>密钥不出本机</strong>
+          <p>纯静态页面 · 无后端服务器</p>
+        </div>
+      </div>
+    </aside>
+
+    <!-- 右侧内容区 -->
+    <main class="content">
+      <header class="topbar">
+        <div>
+          <h2 id="stepTitle">下载并安装 Codex</h2>
+          <p id="stepSubtitle">从一个官方下载按钮开始，全程无需命令行。</p>
+        </div>
+        <span class="pill" title="本工具仅支持 Windows / macOS 电脑端访问">桌面端专用</span>
+      </header>
+
+      <div class="panels">
+
+        <!-- 步骤 1 -->
+        <section class="step-panel" id="step1" data-step="1">
+          <div class="panel-head">
+            <span class="step-badge">步骤 1 / 5</span>
+            <h3>下载并安装 Codex</h3>
+            <p>Codex 是 OpenAI 官方的 AI 编程助手，DeepSeek 已官方适配。请先下载并安装，然后至少启动一次（首次启动会生成本机配置目录 <code>~/.codex</code>）。</p>
+          </div>
+          <div class="actions">
+            <button class="btn primary" id="btnOpenCodexSite">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+              打开 Codex 官方下载页
+            </button>
+            <button class="btn secondary" id="btnOpenChatGPTDownload">打开 ChatGPT 桌面版下载页</button>
+            <button class="btn ghost" id="btnOpenCliGuide">CLI 安装说明（开发者）</button>
+          </div>
+          <div class="note">
+            <strong>提示：</strong>Windows 用户推荐从官方下载页下载（会跳转到微软商店）。安装完成后请打开一次 Codex，让它生成 <code>~/.codex</code> 目录。
+          </div>
+          <div class="actions continue">
+            <button class="btn primary big" id="btnInstalled">我已安装并启动过 Codex，下一步
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            </button>
+          </div>
+        </section>
+
+        <!-- 步骤 2 -->
+        <section class="step-panel" id="step2" data-step="2" hidden>
+          <div class="panel-head">
+            <span class="step-badge">步骤 2 / 5</span>
+            <h3>登录 DeepSeek 开放平台</h3>
+            <p>点击下方按钮打开 DeepSeek 开放平台。如果没有账号，先在页面上注册；登录过程（密码、短信验证码）由你自己完成，工具不会接触你的密码。</p>
+          </div>
+          <div class="actions">
+            <button class="btn primary" id="btnOpenDeepSeek">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+              打开 DeepSeek 开放平台
+            </button>
+          </div>
+          <div class="actions continue">
+            <button class="btn primary big" id="btnLoggedIn">我已登录，下一步
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            </button>
+          </div>
+        </section>
+
+        <!-- 步骤 3 -->
+        <section class="step-panel" id="step3" data-step="3" hidden>
+          <div class="panel-head">
+            <span class="step-badge">步骤 3 / 5</span>
+            <h3>创建并粘贴 API Key</h3>
+            <p>在 DeepSeek 平台左侧进入「API Keys」，点击「创建密钥」。密钥只显示一次，复制后粘贴到下面的输入框。</p>
+          </div>
+          <div class="actions">
+            <button class="btn secondary" id="btnOpenApiKeys">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+              打开 API Keys 页面
+            </button>
+          </div>
+          <div class="field">
+            <label for="apiKeyInput">DeepSeek API Key</label>
+            <div class="input-row">
+              <input type="password" id="apiKeyInput" placeholder="sk-..." autocomplete="off" spellcheck="false">
+              <button class="btn ghost icon-btn" id="btnToggleKey" type="button" title="显示/隐藏">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+              </button>
+            </div>
+            <p class="field-hint">以 <code>sk-</code> 开头；只在你的浏览器中处理，不会上传。</p>
+          </div>
+          <div class="field">
+            <label for="modelSelect">使用模型</label>
+            <select id="modelSelect">
+              <option value="deepseek-v4-flash" selected>deepseek-v4-flash（推荐，已适配 Codex）</option>
+              <option value="deepseek-v4-pro">deepseek-v4-pro（预计 8 月初支持，如验证失败请换 flash）</option>
+            </select>
+          </div>
+          <div class="actions">
+            <button class="btn primary" id="btnValidateKey">验证 Key 是否可用</button>
+            <button class="btn ghost" id="btnSkipValidate">暂不验证，直接下一步</button>
+          </div>
+          <div class="status" id="validateStatus"></div>
+        </section>
+
+        <!-- 步骤 4 -->
+        <section class="step-panel" id="step4" data-step="4" hidden>
+          <div class="panel-head">
+            <span class="step-badge">步骤 4 / 5</span>
+            <h3>一键部署到 Codex</h3>
+            <p>选一种方式把 DeepSeek 写进 Codex 配置。推荐方式 A：在浏览器里直接选择 <code>~/.codex</code> 文件夹，自动写入并备份。</p>
+          </div>
+
+          <div class="method-grid">
+            <div class="method-card selected" data-method="a">
+              <div class="method-head">
+                <span class="method-radio"></span>
+                <h3>A. 网页一键部署</h3>
+              </div>
+              <p>Chrome / Edge 浏览器支持，选择文件夹后自动写入配置并备份，可一键恢复。</p>
+              <button class="btn primary" id="btnPickDir">选择 ~/.codex 文件夹并部署</button>
+              <div id="deployConfirm" hidden>
+                <div class="field compact">
+                  <label for="catalogPathInput">模型目录路径（写入配置用，Windows 建议填完整路径）</label>
+                  <input type="text" id="catalogPathInput" placeholder="C:/Users/你的用户名/.codex/models.json 或 ~/.codex/models.json">
+                </div>
+                <button class="btn primary" id="btnConfirmDeploy">确认写入配置</button>
+              </div>
+              <div class="status" id="deployStatus"></div>
+              <div class="sub-actions" id="deploySubActions" hidden>
+                <button class="btn secondary" id="btnVerifyDeployed">验证连通</button>
+                <button class="btn ghost" id="btnRestore">恢复备份</button>
+              </div>
+            </div>
+
+            <div class="method-card" data-method="b">
+              <div class="method-head">
+                <span class="method-radio"></span>
+                <h3>B. 官方 PowerShell 脚本</h3>
+              </div>
+              <p>复制命令到 PowerShell 运行，官方脚本会自动备份、校验、写入配置。</p>
+              <button class="btn primary" id="btnCopyScript">复制官方脚本命令</button>
+              <div class="status" id="copyStatus"></div>
+            </div>
+
+            <div class="method-card" data-method="c">
+              <div class="method-head">
+                <span class="method-radio"></span>
+                <h3>C. 手动下载配置文件</h3>
+              </div>
+              <p>下载两个文件放到 <code>~/.codex</code> 目录。已有配置时可先选择旧文件合并。</p>
+              <div class="actions">
+                <button class="btn primary" id="btnDownloadConfig">下载 config.toml</button>
+                <button class="btn secondary" id="btnDownloadModels">下载 models.json</button>
+              </div>
+              <label class="file-pick">
+                <input type="file" id="existingConfigFile" accept=".toml,.txt" hidden>
+                提示：已有 config.toml？点此选择，下载时会自动合并
+              </label>
+              <div class="status" id="downloadStatus"></div>
+            </div>
+          </div>
+
+          <div class="actions continue">
+            <button class="btn primary big" id="btnDeployDone">部署完成，下一步
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            </button>
+          </div>
+        </section>
+
+        <!-- 步骤 5 -->
+        <section class="step-panel" id="step5" data-step="5" hidden>
+          <div class="panel-head center">
+            <div class="done-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </div>
+            <h3>全部完成，开始使用</h3>
+            <p>重启 Codex（CLI 或桌面 App），就会用 DeepSeek 模型开始工作。以后想切换模型或恢复配置，回到本页第 4 步即可。</p>
+          </div>
+          <div class="actions center">
+            <button class="btn primary big" id="btnOpenCodexAgain">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+              打开 Codex 官方网站
+            </button>
+          </div>
+          <div class="tips">
+            <h4>使用小贴士</h4>
+            <ul>
+              <li><strong>切换模型：</strong>重新运行部署，选择 flash 或 pro 即可。</li>
+              <li><strong>恢复原配置：</strong>再次选择 <code>~/.codex</code> 文件夹，点「恢复备份」。</li>
+              <li><strong>安全提醒：</strong>API Key 会以明文保存在 <code>~/.codex/config.toml</code>，请不要分享该文件；如担心泄露，可在 DeepSeek 平台随时创建新 Key 并轮换。</li>
+              <li><strong>三端通用：</strong>配置一次后，Codex CLI、桌面 App、VS Code 插件共用同一份配置。</li>
+            </ul>
+          </div>
+        </section>
+
+      </div>
+
+      <footer class="content-footer">
+        <span>Codex 由 OpenAI 提供 · DeepSeek 接入说明来自</span>
+        <a href="https://api-docs.deepseek.com/quick_start/agent_integrations/codex/" target="_blank" rel="noopener">DeepSeek 官方文档</a>
+      </footer>
+    </main>
+  </div>
+
+  <div id="toastRoot"></div>
+
+  <script src="models-data.js"></script>
+  <script src="toml-merge.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
